@@ -33,6 +33,16 @@ const plants = [
     }
 ];
 
+function gethealth(req , res){
+    res.json ({
+        success: true,
+        message : "server is running"
+    })
+}
+
+app.get("/health", gethealth)
+
+
 app.post("/plant", (req, res) => {
     const { name, category, image, price, discription } = req.body;
 
@@ -168,7 +178,7 @@ app.delete("/plant/:id", (req , res) =>{
   })  
 })
 
-app.use("*", (res,res)=>{
+app.use("*", (req ,res)=>{
     res.send(`<div>
         <h1 style="text-align :center;"> 404 not found</div>`)
 })
