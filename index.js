@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config()
+import mongoose from 'mongoose';
 
 import { gethealth } from './controllers/health.js';
 import { postplant ,
@@ -16,32 +17,19 @@ const app = express();
 
 app.use(express.json());
 
-const plants = [
-    {
-        "id": 5,
-        "name": "Bamboo tree",
-        "category": "indoor",
-        "image": "https://m.media-amazon.com/images/I/416LO2x7DFL.jpg",
-        "price": "200",
-        "discription": "bamboo represents the wood element"
-    },
-    {
-        "id": 2,
-        "name": "Rose",
-        "category": "outdoor",
-        "image": "https://m.media-amazon.com/images/I/416LO2x7DFL.jpg",
-        "price": "200",
-        "discription": "rose a beautiful plant"
-    },
-    {
-        "id": 3,
-        "name": "Mango",
-        "category": "indoor",
-        "image": "https://m.media-amazon.com/images/I/416LO2x7DFL.jpg",
-        "price": "250",
-        "discription": "mango a special tree"
-    }
-];
+const dbconnection  = async()=>{
+ const conn = await mongoose.connect("mongodb+srv://Khushi:nafis%402580@khushi.w8uwzar.mongodb.net/Nursery-server")
+ if(conn){
+    console.log('MongoDB connected 😊')
+ }
+
+ else{
+    console.log('MongoDB not connected ❌')
+ }
+ 
+}
+
+dbconnection();
 
 
 
@@ -65,7 +53,7 @@ app.use("*",controllerspagenotfound )
 
 
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT  || 8000;
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`);
 });

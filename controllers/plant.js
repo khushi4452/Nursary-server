@@ -152,7 +152,7 @@ const deleteplantid = (req,res)=>{
 }
 
 
-export {postplant,
+export {postplant, 
     getplants,
     getplantid,
     putplantid,
