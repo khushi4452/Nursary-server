@@ -17,8 +17,8 @@ const app = express();
 
 app.use(express.json());
 
-const dbconnection  = async()=>{
- const conn = await mongoose.connect("mongodb+srv://Khushi:nafis%402580@khushi.w8uwzar.mongodb.net/Nursery-server")
+const dbconnection = async()=>{
+ const conn = await mongoose.connect(process.env.MONGO_URL)
  if(conn){
     console.log('MongoDB connected 😊')
  }
@@ -28,7 +28,6 @@ const dbconnection  = async()=>{
  }
  
 }
-
 dbconnection();
 
 
