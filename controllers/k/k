@@ -1,0 +1,8 @@
+
+const getplants = (req, res) => {
+    res.json({
+        success: true,
+        data: plants,
+        message: "All plants fetched successfully."
+    });
+};
